@@ -1,0 +1,28 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "adfdemo",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileInput": "@triggerBody().fileName",
+					"fileOutput": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/853b70f3-e557-43cb-9880-985c4b537e37/resourceGroups/data-engineering-synapse-cfd1jeo/providers/Microsoft.Storage/storageAccounts/asastorecfd1jeo",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
